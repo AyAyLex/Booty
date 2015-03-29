@@ -25,6 +25,8 @@ typedef struct MemoryStruct
 	int endTime;
 	int startAddr;
 	int endAddr;
+	// Space = 0 for Free, else 1 for Allocated
+	int space;
 	struct MemoryStruct *Next;
 	struct MemoryStruct *Prev;
 } Memory;
@@ -61,7 +63,7 @@ void print_all(int size, int policy, int param, int count, Process *head)
 }
 
 // Function for Memory Policy VSP
-vsp(int size, int param, int count, Process *head)
+void vsp(int size, int param, int count, Process *head)
 {
 	// Create initial Memory Struct
 	Memory* main = (Memory*)malloc(sizeof(Memory));
@@ -70,18 +72,40 @@ vsp(int size, int param, int count, Process *head)
 	main->endTime = -1;
 	main->startAddr = 0;
 	main->endAddr = size-1;
+	main->space = 0;
 	main->Next = NULL;
 	main->Prev = NULL;
+	
+	// First-Fit Policy parameter
+	if(param == 0)
+	{
+		
+	}
+	// Best-Fit Policy Parameter
+	else if(param == 1)
+	{
+		
+	}
+	// Worst-Fit Policy Parameter
+	else if(param == 2)
+	{
+		
+	}
+	else
+	{
+		// Do nothing, not a policy parameter
+		printf("Not a policy parameter.\n");
+	}
 }
 
 // Function for Memory Policy PAG
-pag(int size, int param, int count, Process *head)
+void pag(int size, int param, int count, Process *head)
 {
 	
 }
 
 // Function for Memory Policy SEG
-seg(int size, int param, int count, Process *head)
+void seg(int size, int param, int count, Process *head)
 {
 	
 }
