@@ -25,8 +25,8 @@ typedef struct MemoryStruct
 	int endTime;
 	int startAddr;
 	int endAddr;
-	struct ProcessStruct *Next;
-	struct ProcessStruct *Prev;
+	struct MemoryStruct *Next;
+	struct MemoryStruct *Prev;
 } Memory;
 
 // Function to print all process information
@@ -63,7 +63,15 @@ void print_all(int size, int policy, int param, int count, Process *head)
 // Function for Memory Policy VSP
 vsp(int size, int param, int count, Process *head)
 {
-	
+	// Create initial Memory Struct
+	Memory* main = (Memory*)malloc(sizeof(Memory));
+	main->pID = -1;
+	main->arvTime = -1;
+	main->endTime = -1;
+	main->startAddr = 0;
+	main->endAddr = size-1;
+	main->Next = NULL;
+	main->Prev = NULL;
 }
 
 // Function for Memory Policy PAG
